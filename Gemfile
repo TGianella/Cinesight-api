@@ -60,3 +60,5 @@ gem "table_print", "~> 1.5"
 gem "faker", "~> 3.2"
 
 gem "shoulda-matchers", "~> 5.3"
+
+gem "bundler-audit", "~> 0.9.1"
