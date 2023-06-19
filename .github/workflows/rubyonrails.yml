@@ -25,8 +25,8 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
-      SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      secret_key_base: ${{ secrets.SECRET_KEY_BASE }}
+      rails_master_key: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
