@@ -214,6 +214,8 @@ GEM
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     table_print (1.5.7)
     thor (1.2.2)
     timeout (0.3.2)
@@ -248,6 +250,7 @@ DEPENDENCIES
   rails (~> 7.0.5)
   rspec-rails (~> 6.0)
   rubocop (~> 1.52)
+  shoulda-matchers (~> 5.3)
   table_print (~> 1.5)
   tzinfo-data
 
