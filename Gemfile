@@ -67,3 +67,5 @@ gem 'bundler-audit', '~> 0.9.1'
 
 gem 'brakeman', '~> 6.0'
 
+
+gem "fuubar", "~> 2.5"
