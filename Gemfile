@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug', '~> 11.1'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0'
+  gem "dotenv-rails", "~> 2.8"
 end
 
 group :development do
@@ -70,3 +71,6 @@ gem 'brakeman', '~> 6.0'
 gem 'rubocop-rails', '~> 2.20'
 
 gem 'rubocop-rspec', '~> 2.22'
+
+gem "rest-client", "~> 2.1"
+
