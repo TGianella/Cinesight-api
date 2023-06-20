@@ -65,3 +65,5 @@ gem 'shoulda-matchers', '~> 5.3'
 gem 'bundler-audit', '~> 0.9.1'
 
 gem 'brakeman', '~> 6.0'
+
+gem "rubocop-rails", "~> 2.20"
