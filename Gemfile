@@ -42,8 +42,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug', '~> 11.1'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails', '~> 2.8'
   gem 'rspec-rails', '~> 6.0'
-  gem "dotenv-rails", "~> 2.8"
 end
 
 group :development do
@@ -72,5 +72,4 @@ gem 'rubocop-rails', '~> 2.20'
 
 gem 'rubocop-rspec', '~> 2.22'
 
-gem "rest-client", "~> 2.1"
-
+gem 'rest-client', '~> 2.1'
