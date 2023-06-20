@@ -14,3 +14,7 @@ Metrics/BlockLength:
 Rails/NotNullColumn:
     Exclude:
         - db/migrate/20230607091520_add_jti_to_users.rb
+
+Style/Documentation:
+    Exclude:
+        - spec/**/*
