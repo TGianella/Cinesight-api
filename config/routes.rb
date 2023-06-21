@@ -14,4 +14,6 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
   get '/', to: 'movies#index'
+  get '/movies', to: 'movies#search'
+  get '/movie/:id', to: 'movies#show'
 end
