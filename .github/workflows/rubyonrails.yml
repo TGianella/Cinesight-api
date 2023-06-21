@@ -7,9 +7,9 @@
 name: "Ruby on Rails CI"
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "development" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "development" ]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -27,6 +27,7 @@ jobs:
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
       SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      API_KEY: ${{ secrets.API_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
