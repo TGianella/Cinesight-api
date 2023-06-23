@@ -13,7 +13,7 @@ Rails.application.routes.draw do
              controllers: {
                sessions: 'users/sessions',
                registrations: 'users/registrations',
-               passwords: 'devise/passwords'
+               passwords: 'users/passwords'
              }
 
   # put '/users/password', to: 'devise/passwords#update'
