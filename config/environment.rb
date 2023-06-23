@@ -13,7 +13,3 @@ ActionMailer::Base.smtp_settings = {
   authentication: :plain,
   enable_starttls_auto: true
 }
-
-puts('$' * 60)
-puts(ActionMailer::Base.smtp_settings)
-puts('$' * 60)
