@@ -84,7 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: '5174' }
+  config.action_mailer.default_url_options = { host: 'https://cinesight.vercel.app' }
 
   # Allow requests from all origins
   config.allowed_cors_origins = '*'
