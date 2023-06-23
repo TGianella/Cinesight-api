@@ -5,11 +5,15 @@ require_relative 'application'
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  user_name: ENV['SENDGRID_LOGIN'],
-  password: ENV['SENDGRID_PWD'],
-  domain: 'cinesight.vercel.app',
+  user_name: ENV.fetch('SENDGRID_LOGIN', nil),
+  password: ENV.fetch('SENDGRID_PWD', nil),
+  domain: 'cinesight-api-prod.herokuapp',
   address: 'smtp.sendgrid.net',
   port: 587,
   authentication: :plain,
   enable_starttls_auto: true
 }
+
+puts('$' * 60)
+puts(ActionMailer::Base.smtp_settings)
+puts('$' * 60)
