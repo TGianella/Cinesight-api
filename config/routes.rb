@@ -7,12 +7,18 @@ Rails.application.routes.draw do
              path_names: {
                sign_in: 'login',
                sign_out: 'logout',
-               registration: 'signup'
+               registration: 'signup',
+               password: 'password'
              },
              controllers: {
                sessions: 'users/sessions',
-               registrations: 'users/registrations'
+               registrations: 'users/registrations',
+               passwords: 'devise/passwords'
              }
+
+  # put '/users/password', to: 'devise/passwords#update'
+  # post '/users/password', to: 'devise/passwords#create'
+
   get '/', to: 'movies#index'
   get '/movies', to: 'movies#search'
   get '/movie/:id', to: 'movies#show'
