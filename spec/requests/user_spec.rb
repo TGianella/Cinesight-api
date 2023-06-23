@@ -58,4 +58,38 @@ RSpec.describe 'Users' do
       expect(response.parsed_body['message']).to eq('logged out successfully')
     end
   end
+
+  describe 'POST #password' do
+    it 'responds with ok status' do
+      User.create(email: 'test@mail.fr', password: 'foobar')
+
+      post '/password', params: { user: { email: 'test@mail.fr' } }
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'sends an email' do
+      User.create(email: 'test@mail.fr', password: 'foobar')
+
+      post '/password', params: { user: { email: 'test@mail.fr' } }
+
+      expect(Devise.mailer.deliveries.count).to eq(1)
+    end
+
+    it 'sends an email to the user' do
+      User.create(email: 'test@mail.fr', password: 'foobar')
+
+      post '/password', params: { user: { email: 'test@mail.fr' } }
+
+      expect(Devise.mailer.deliveries.first.to).to eq(['test@mail.fr'])
+    end
+
+    it 'sends an email from the correct address' do
+      User.create(email: 'test@mail.fr', password: 'foobar')
+
+      post '/password', params: { user: { email: 'test@mail.fr' } }
+
+      expect(Devise.mailer.deliveries.first.from).to eq(['saeros@yopmail.com'])
+    end
+  end
 end
