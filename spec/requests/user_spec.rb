@@ -61,7 +61,7 @@ RSpec.describe 'Users' do
 
   describe 'POST #password' do
     it 'responds with ok status' do
-      user = User.create(email: 'test@mail.fr', password: 'foobar')
+      User.create(email: 'test@mail.fr', password: 'foobar')
 
       post '/password', params: { user: { email: 'test@mail.fr' } }
 
@@ -69,7 +69,7 @@ RSpec.describe 'Users' do
     end
 
     it 'sends an email' do
-      user = User.create(email: 'test@mail.fr', password: 'foobar')
+      User.create(email: 'test@mail.fr', password: 'foobar')
 
       post '/password', params: { user: { email: 'test@mail.fr' } }
 
@@ -77,7 +77,7 @@ RSpec.describe 'Users' do
     end
 
     it 'sends an email to the user' do
-      user = User.create(email: 'test@mail.fr', password: 'foobar')
+      User.create(email: 'test@mail.fr', password: 'foobar')
 
       post '/password', params: { user: { email: 'test@mail.fr' } }
 
@@ -85,7 +85,7 @@ RSpec.describe 'Users' do
     end
 
     it 'sends an email from the correct address' do
-      user = User.create(email: 'test@mail.fr', password: 'foobar')
+      User.create(email: 'test@mail.fr', password: 'foobar')
 
       post '/password', params: { user: { email: 'test@mail.fr' } }
 
