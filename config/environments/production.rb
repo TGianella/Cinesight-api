@@ -84,6 +84,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { host: 'https://cinesight-api-39a0e67bef51.herokuapp.com/' }
+
   # Allow requests from all origins
   config.allowed_cors_origins = '*'
 end
