@@ -16,9 +16,6 @@ Rails.application.routes.draw do
                passwords: 'users/passwords'
              }
 
-  # put '/users/password', to: 'devise/passwords#update'
-  # post '/users/password', to: 'devise/passwords#create'
-
   get '/', to: 'movies#index'
   get '/movies', to: 'movies#search'
   get '/movie/:id', to: 'movies#show'
