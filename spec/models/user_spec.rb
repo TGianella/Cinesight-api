@@ -21,4 +21,10 @@ RSpec.describe User do
     user = described_class.new(email: 'jean-bonneau', password: 'foobar')
     expect(user.save).to be false
   end
+
+  it 'can properly own a watchlist' do
+    subject = described_class.create(email: 'test@test.com', password: 'foobar')
+    watchlist = Watchlist.create(user: subject)
+    expect(watchlist.user).to eq subject
+  end
 end
