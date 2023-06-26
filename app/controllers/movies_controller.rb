@@ -24,11 +24,18 @@ class MoviesController < ApplicationController
       return
     end
 
-    url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
-    response = query_external_db(url)
+    detailsUrl = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
+    response = query_external_db(detailsUrl)
 
     if response.present?
       movie = parse_response(response)
+
+      creditsUrl = "https://api.themoviedb.org/3/movie/#{movie_id}/credits?language=fr-FR"
+      response = query_external_db(creditsUrl)
+      body = JSON.parse(response.body, { symbolize_names: true })
+      director = body[:crew].select { |crew_member| crew_member[:job] == 'Director' }.first
+
+      movie.update!(director: director[:name])
 
       render json: movie
     else
