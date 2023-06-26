@@ -1,5 +1,5 @@
 class WatchlistsController < ApplicationController
-  before_action get_watchlist
+  before_action :get_watchlist
 
   def show
     render json: @watchlist.movies

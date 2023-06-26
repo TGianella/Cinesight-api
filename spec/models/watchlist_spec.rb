@@ -23,10 +23,10 @@ RSpec.describe Watchlist do
 
   it 'can belong to movies' do
     subject = described_class.create(user: @user, movies: [@movie])
-    expect(movie.watchlists).to include subject
+    expect(@movie.watchlists).to include subject
   end
 
-  it "cannot have duplicates of the same movie" do
+  it 'cannot have duplicates of the same movie' do
     subject = described_class.create(user: @user, movies: [@movie])
     expect { subject.movies << @movie }.to raise_error ActiveRecord::RecordNotUnique
   end
