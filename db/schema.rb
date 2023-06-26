@@ -16,9 +16,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_083003) do
 
   create_table "movies", id: false, force: :cascade do |t|
     t.integer "id", null: false
-    t.string "title"
+    t.string "title", null: false
     t.float "vote_average"
+    t.integer "vote_count"
     t.string "poster_path"
+    t.string "original_title"
+    t.text "overview"
+    t.string "release_date"
+    t.string "tagline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_movies_on_id", unique: true
