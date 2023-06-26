@@ -29,45 +29,45 @@ RSpec.describe 'Watchlists' do
     end
 
     it 'returns http success' do
-      post '/watchlist/include?movie_id=2'
+      post '/watchlist/2'
       expect(response).to have_http_status(:success)
     end
 
     it 'adds the movie to the watchlist' do
-      post '/watchlist/include?movie_id=2'
+      post '/watchlist/2'
       expect(@watchlist.movies).to include @movie2
     end
 
     it "doesn't alter previous state" do
-      post '/watchlist/include?movie_id=2'
+      post '/watchlist/2'
       expect(@watchlist.movies).to include @movie
     end
 
     it 'returns http 409 conflict if movie is already in watchlist' do
-      post '/watchlist/include?movie_id=1'
+      post '/watchlist/1'
       expect(response).to have_http_status(:conflict)
     end
   end
 
   describe 'DELETE /remove_movie' do
     it 'returns http success' do
-      delete '/watchlist/remove?movie_id=1'
+      delete '/watchlist/1'
       expect(response).to have_http_status(:success)
     end
 
     it 'removes the movie from the watchlist' do
-      delete '/watchlist/remove?movie_id=1'
+      delete '/watchlist/1'
       expect(@watchlist.movies).not_to include @movie
     end
 
     it "doesn't alter other records" do
       @watchlist.movies << Movie.create(id: 2, title: 'test')
-      delete '/watchlist/remove?movie_id=2'
+      delete '/watchlist/2'
       expect(@watchlist.movies).to include @movie
     end
 
     it 'returns http 404 not found if movie is not in watchlist' do
-      delete '/watchlist/remove?movie_id=3'
+      delete '/watchlist/3'
       expect(response).to have_http_status(:not_found)
     end
   end
