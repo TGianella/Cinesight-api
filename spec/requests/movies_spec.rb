@@ -49,6 +49,12 @@ RSpec.describe 'Movies' do
       get '/movie/226979'
     end
 
+    it 'returns a movie when it is in local db' do
+      Movie.create(id: 226_979, title: 'test')
+      get '/movie/226979'
+      expect(response.parsed_body).not_to be_empty
+    end
+
     it 'queries TMDB if movie is not found in local db' do
       expect_any_instance_of(MoviesController).to receive(:query_external_db).and_call_original
       get '/movie/226979'

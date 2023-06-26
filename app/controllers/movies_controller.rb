@@ -19,13 +19,16 @@ class MoviesController < ApplicationController
   def show
     movie_id = params[:id]
     movie = Movie.find_by(id: movie_id)
-    return unless movie.nil?
+    if movie
+      render json: movie
+      return
+    end
 
     url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
     response = query_external_db(url)
+
     if response.present?
-      body = JSON.parse(response.body, { symbolize_names: true })
-      movie = register_movie(body)
+      movie = parse_response(response)
 
       render json: movie
     else
@@ -39,6 +42,11 @@ class MoviesController < ApplicationController
     RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
   rescue RestClient::NotFound
     nil
+  end
+
+  def parse_response(response)
+    body = JSON.parse(response.body, { symbolize_names: true })
+    register_movie(body)
   end
 
   def register_movie(body)
