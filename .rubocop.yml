@@ -20,3 +20,10 @@ Style/Documentation:
 
 RSpec/AnyInstance:
     Enabled: false
+
+Rails/HasAndBelongsToMany:
+    Enabled: false
+
+RSpec/InstanceVariable:
+    Enabled: false
+

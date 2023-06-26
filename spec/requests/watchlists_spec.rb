@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Watchlists' do
   before do
-    @user = User.create(email: 'test@test.com', password: 'foobar')
+    user = User.create(email: 'test@test.com', password: 'foobar')
     @movie = Movie.create(id: 1, title: 'test')
-    @watchlist = Watchlist.create(user: @user, movies: [@movie])
-    sign_in @user
+    @watchlist = Watchlist.create(user: user, movies: [@movie])
+    sign_in user
   end
 
   describe 'GET /watchlist' do
