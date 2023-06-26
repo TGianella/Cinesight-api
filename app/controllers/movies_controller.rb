@@ -19,9 +19,11 @@ class MoviesController < ApplicationController
   def show
     movie_id = params[:id]
     movie = Movie.find_by(id: movie_id)
-    if movie.nil?
-      url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
-      response = queryExternalDB(url)
+    return unless movie.nil?
+
+    url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
+    response = queryExternalDB(url)
+    if response.present?
       body = JSON.parse(response.body, { symbolize_names: true })
 
       movie = Movie.new(id: body[:id],
@@ -35,14 +37,17 @@ class MoviesController < ApplicationController
                         tagline: body[:tagline])
 
       movie.save!
+      render json: movie
+    else
+      render json: { error: 'not-found' }, status: :not_found
     end
-
-    render json: movie
   end
 
   private
 
   def queryExternalDB(url)
     RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
+  rescue RestClient::NotFound
+    nil
   end
 end
