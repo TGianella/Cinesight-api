@@ -44,7 +44,7 @@ RSpec.describe 'Movies' do
     end
 
     it 'returns without querying TMDB if movie is in local db' do
-      Movie.create(id: 226_979, title: 'test')
+      Movie.create(id: 226_979, title: 'test', director: 'Chris Mason Johnson')
       expect_any_instance_of(MoviesController).not_to receive(:query_external_db)
       get '/movie/226979'
     end
@@ -83,6 +83,12 @@ RSpec.describe 'Movies' do
     it "returns 404 when the id doesn't exist in TMDB" do
       get '/movie/4672787425478'
       expect(response).to have_http_status(:not_found)
+    end
+
+    it 'updates movie in local db with director if director is not found' do
+      Movie.create(id: 226_979, title: 'test')
+      get '/movie/226979'
+      expect(response.parsed_body['director']).to eq('Chris Mason Johnson')
     end
   end
 end
