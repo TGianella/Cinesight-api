@@ -22,9 +22,13 @@ RSpec.describe User do
     expect(user.save).to be false
   end
 
-  it 'can properly own a watchlist' do
+  it 'automatically creates watchlist on creation' do
     subject = described_class.create(email: 'test@test.com', password: 'foobar')
-    watchlist = Watchlist.create(user: subject)
-    expect(watchlist.user).to eq subject
+    expect(subject.watchlist).not_to be_nil
+  end
+
+  it 'cannot have two watchlists' do
+    subject = described_class.create(email: 'test@test.com', password: 'foobar')
+    expect { Watchlist.create(user: subject) }.to raise_error ActiveRecord::RecordNotUnique
   end
 end

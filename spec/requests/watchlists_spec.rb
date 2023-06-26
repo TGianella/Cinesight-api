@@ -4,7 +4,8 @@ RSpec.describe 'Watchlists' do
   before do
     user = User.create(email: 'test@test.com', password: 'foobar')
     @movie = Movie.create(id: 1, title: 'test')
-    @watchlist = Watchlist.create(user: user, movies: [@movie])
+    @watchlist = user.watchlist
+    @watchlist.movies << @movie
     sign_in user
   end
 

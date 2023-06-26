@@ -24,7 +24,7 @@ RSpec.describe Movie do
 
   it 'can belong to a watchlist' do
     user = User.create(email: 'test@test.com', password: 'foobar')
-    watchlist = Watchlist.create(user: user)
+    watchlist = user.watchlist
     subject = described_class.create(id: 1, title: 'test', watchlists: [watchlist])
     expect(watchlist.movies).to include subject
   end

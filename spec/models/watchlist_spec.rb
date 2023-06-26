@@ -7,7 +7,7 @@ RSpec.describe Watchlist do
   end
 
   it 'creates a record in the database' do
-    subject = described_class.new(user: @user)
+    subject = @user.watchlist
     expect(subject.save).to be true
   end
 
@@ -17,17 +17,19 @@ RSpec.describe Watchlist do
   end
 
   it 'properly belongs to an user' do
-    subject = described_class.create(user: @user)
+    subject = @user.watchlist
     expect(@user.watchlist).to eq subject
   end
 
   it 'can belong to movies' do
-    subject = described_class.create(user: @user, movies: [@movie])
+    subject = @user.watchlist
+    subject.movies << @movie
     expect(@movie.watchlists).to include subject
   end
 
   it 'cannot have duplicates of the same movie' do
-    subject = described_class.create(user: @user, movies: [@movie])
+    subject = @user.watchlist
+    subject.movies << @movie
     expect { subject.movies << @movie }.to raise_error ActiveRecord::RecordNotUnique
   end
 end

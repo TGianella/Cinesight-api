@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_one :watchlist, dependent: :destroy
+  after_create :create_watchlist
 end

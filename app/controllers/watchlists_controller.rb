@@ -1,4 +1,5 @@
 class WatchlistsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_watchlist
   before_action only: %i[include_movie remove_movie] do
     @movie = find_movie(params[:movie_id])
