@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   get '/movies', to: 'movies#search'
   get '/movie/:id', to: 'movies#show'
   get '/watchlist', to: 'watchlists#show'
-  put '/watchlist/include', to: 'watchlists#include_movie'
-  put '/watchlist/remove', to: 'watchlists#remove_movie'
+  post '/watchlist/include', to: 'watchlists#include_movie'
+  delete '/watchlist/remove', to: 'watchlists#remove_movie'
 end

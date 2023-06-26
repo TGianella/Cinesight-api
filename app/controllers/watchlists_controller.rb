@@ -1,7 +1,9 @@
 class WatchlistsController < ApplicationController
-  before_action :get_watchlist
+  before_action :find_watchlist
   before_action only: %i[include_movie remove_movie] do
-    @movie = get_movie(params[:movie_id])
+    @movie = find_movie(params[:movie_id])
+  rescue ActiveRecord::RecordNotFound
+    @movie = nil
   end
 
   def show
@@ -9,17 +11,17 @@ class WatchlistsController < ApplicationController
   end
 
   def include_movie
-    if @watchlist.movies.include? movie
+    if @watchlist.movies.include? @movie
       head :conflict
     else
-      @watchlist.movies << Movie.find(movie_id)
+      @watchlist.movies << @movie
       head :ok
     end
   end
 
   def remove_movie
-    if @watchlist.movies.include? movie
-      @watchlist.movies.delete_if { |movie| movie.id == movie_id }
+    if @watchlist.movies.include? @movie
+      @watchlist.movies.delete(@movie)
       head :ok
     else
       head :not_found
@@ -28,11 +30,11 @@ class WatchlistsController < ApplicationController
 
   private
 
-  def get_watchlist
+  def find_watchlist
     @watchlist = current_user.watchlist
   end
 
-  def get_movie(movie_id)
+  def find_movie(movie_id)
     @movie = Movie.find(movie_id)
   end
 end
