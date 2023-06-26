@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     url = 'https://api.themoviedb.org/3/movie/now_playing'
-    response = RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
+    response = queryExternalDB(url)
 
     render json: response
   end
@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   def search
     query = params[:query]
     url = "https://api.themoviedb.org/3/search/movie?query=#{query}&include_adult=false&language=fr-FR&page=1"
-    response = RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
+    response = queryExternalDB(url)
 
     render json: response
   end
@@ -19,8 +19,14 @@ class MoviesController < ApplicationController
   def show
     movie_id = params[:id]
     url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=en-US"
-    response = RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
+    response = queryExternalDB(url)
 
     render json: response
+  end
+
+  private
+
+  def queryExternalDB(url)
+    RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
   end
 end
