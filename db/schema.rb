@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_152323) do
     t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id", "watchlist_id"], name: "index_movies_watchlists_on_movie_id_and_watchlist_id", unique: true
     t.index ["movie_id"], name: "index_movies_watchlists_on_movie_id"
     t.index ["watchlist_id"], name: "index_movies_watchlists_on_watchlist_id"
   end
