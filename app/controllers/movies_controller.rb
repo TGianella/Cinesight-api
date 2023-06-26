@@ -18,10 +18,20 @@ class MoviesController < ApplicationController
 
   def show
     movie_id = params[:id]
-    url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=en-US"
-    response = queryExternalDB(url)
+    movie = Movies.find_by(id: movie_id)
+    if movie.nil?
+      url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=en-US"
+      response = queryExternalDB(url)
 
-    render json: response
+      movie = Movie.new(id: response.id,
+                        title: response.title,
+                        vote_average: response.vote_average,
+                        poster_path: response.poster_path)
+
+      movie.save!
+    end
+
+    render json: movie
   end
 
   private
