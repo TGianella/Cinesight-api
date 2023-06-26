@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     url = 'https://api.themoviedb.org/3/movie/now_playing'
-    response = queryExternalDB(url)
+    response = query_external_db(url)
 
     render json: response
   end
@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   def search
     query = params[:query]
     url = "https://api.themoviedb.org/3/search/movie?query=#{query}&include_adult=false&language=fr-FR&page=1"
-    response = queryExternalDB(url)
+    response = query_external_db(url)
 
     render json: response
   end
@@ -22,21 +22,11 @@ class MoviesController < ApplicationController
     return unless movie.nil?
 
     url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
-    response = queryExternalDB(url)
+    response = query_external_db(url)
     if response.present?
       body = JSON.parse(response.body, { symbolize_names: true })
+      movie = register_movie(body)
 
-      movie = Movie.new(id: body[:id],
-                        title: body[:title],
-                        vote_average: body[:vote_average],
-                        vote_count: body[:vote_count],
-                        poster_path: body[:poster_path],
-                        original_title: body[:original_title],
-                        overview: body[:overview],
-                        release_date: body[:release_date],
-                        tagline: body[:tagline])
-
-      movie.save!
       render json: movie
     else
       render json: { error: 'not-found' }, status: :not_found
@@ -45,9 +35,24 @@ class MoviesController < ApplicationController
 
   private
 
-  def queryExternalDB(url)
+  def query_external_db(url)
     RestClient.get(url, { Authorization: "Bearer #{ENV.fetch('API_KEY')}" })
   rescue RestClient::NotFound
     nil
+  end
+
+  def register_movie(body)
+    movie = Movie.new(id: body[:id],
+                      title: body[:title],
+                      vote_average: body[:vote_average],
+                      vote_count: body[:vote_count],
+                      poster_path: body[:poster_path],
+                      original_title: body[:original_title],
+                      overview: body[:overview],
+                      release_date: body[:release_date],
+                      tagline: body[:tagline])
+
+    movie.save!
+    movie
   end
 end

@@ -45,12 +45,12 @@ RSpec.describe 'Movies' do
 
     it 'returns without querying TMDB if movie is in local db' do
       Movie.create(id: 226_979, title: 'test')
-      expect_any_instance_of(MoviesController).not_to receive(:queryExternalDB)
+      expect_any_instance_of(MoviesController).not_to receive(:query_external_db)
       get '/movie/226979'
     end
 
     it 'queries TMDB if movie is not found in local db' do
-      expect_any_instance_of(MoviesController).to receive(:queryExternalDB).and_call_original
+      expect_any_instance_of(MoviesController).to receive(:query_external_db).and_call_original
       get '/movie/226979'
     end
 
