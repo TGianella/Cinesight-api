@@ -1,5 +1,5 @@
 class SignupMailer < ApplicationMailer
-  default from: 'rockethell@hotmail.com'
+  default from: 'saeros@yopmail.com'
 
   def welcome_email(user)
     @user = user
