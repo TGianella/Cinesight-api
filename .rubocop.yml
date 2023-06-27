@@ -27,3 +27,7 @@ Rails/HasAndBelongsToMany:
 RSpec/InstanceVariable:
     Enabled: false
 
+Rails/SkipsModelValidations:
+    Exclude:
+        - db/migrate/20230627074331_add_service_name_to_active_storage_blobs.active_storage.rb
+
