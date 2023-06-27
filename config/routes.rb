@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   patch '/profile', to: 'users#update'
   delete '/profile', to: 'users#delete'
+
+  get 'genre/:genre_id', to: 'genres#show'
 end
