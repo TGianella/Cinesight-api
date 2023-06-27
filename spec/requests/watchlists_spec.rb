@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Watchlists' do
   before do
     user = User.create(email: 'test@test.com', password: 'foobar')
-    @movie = Movie.create(id: 1, title: 'test')
+    @test_movie = Movie.create(id: 1, title: 'test')
     @watchlist = user.watchlist
-    @watchlist.movies << @movie
+    @watchlist.movies << @test_movie
     sign_in user
   end
 
@@ -40,7 +40,16 @@ RSpec.describe 'Watchlists' do
 
     it "doesn't alter previous state" do
       post '/watchlist/2'
-      expect(@watchlist.movies).to include @movie
+      expect(@watchlist.movies).to include @test_movie
+    end
+
+    it 'creates a local db record if movie is not found there' do
+      expect { post '/watchlist/3' }.to(change(Movie, :count))
+    end
+
+    it 'puts the movie in the watchlist even if not found locally' do
+      post '/watchlist/3'
+      expect(@watchlist.movies).to include Movie.find(3)
     end
 
     it 'returns http 409 conflict if movie is already in watchlist' do
@@ -57,13 +66,13 @@ RSpec.describe 'Watchlists' do
 
     it 'removes the movie from the watchlist' do
       delete '/watchlist/1'
-      expect(@watchlist.movies).not_to include @movie
+      expect(@watchlist.movies).not_to include @test_movie
     end
 
     it "doesn't alter other records" do
       @watchlist.movies << Movie.create(id: 2, title: 'test')
       delete '/watchlist/2'
-      expect(@watchlist.movies).to include @movie
+      expect(@watchlist.movies).to include @test_movie
     end
 
     it 'returns http 404 not found if movie is not in watchlist' do
