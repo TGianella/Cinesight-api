@@ -90,5 +90,15 @@ RSpec.describe 'Movies' do
       get '/movie/226979'
       expect(response.parsed_body['director']).to eq('Chris Mason Johnson')
     end
+
+    it 'returns a movie with genres' do
+      get '/movie/226979'
+      expect(response.parsed_body['genres']).not_to be_empty
+    end
+
+    it 'returns a movie with the right genres' do
+      get '/movie/226979'
+      expect(Genre.find(response.parsed_body['genres'][0]['id'])).to eq Genre.find(18)
+    end
   end
 end
