@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_121337) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_27_142026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "genres", id: false, force: :cascade do |t|
+    t.integer "id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_genres_on_id", unique: true
+  end
+
+  create_table "genres_movies", id: false, force: :cascade do |t|
+    t.bigint "genre_id", null: false
+    t.bigint "movie_id", null: false
+    t.index ["genre_id"], name: "index_genres_movies_on_genre_id"
+    t.index ["movie_id", "genre_id"], name: "index_genres_movies_on_movie_id_and_genre_id", unique: true
+    t.index ["movie_id"], name: "index_genres_movies_on_movie_id"
+  end
 
   create_table "movies", id: false, force: :cascade do |t|
     t.integer "id", null: false
@@ -62,6 +78,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_121337) do
     t.index ["user_id"], name: "index_watchlists_on_user_id", unique: true
   end
 
+  add_foreign_key "genres_movies", "genres"
+  add_foreign_key "genres_movies", "movies"
   add_foreign_key "movies_watchlists", "movies"
   add_foreign_key "movies_watchlists", "watchlists"
   add_foreign_key "watchlists", "users"
