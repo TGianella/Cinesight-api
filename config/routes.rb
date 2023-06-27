@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   delete '/watchlist/:movie_id', to: 'watchlists#remove_movie'
 
   get '/profile', to: 'users#show'
-  put '/profile/update', to: 'users#update'
+  patch '/profile/update', to: 'users#update'
   delete '/profile', to: 'users#delete'
 end
