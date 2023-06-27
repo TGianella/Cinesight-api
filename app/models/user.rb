@@ -12,6 +12,6 @@ class User < ApplicationRecord
   after_create :create_watchlist
 
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    SignupMailer.welcome_email(self).deliver_now
   end
 end
