@@ -17,3 +17,13 @@ Rails/NotNullColumn:
 
 Style/Documentation:
     Enabled: false
+
+RSpec/AnyInstance:
+    Enabled: false
+
+Rails/HasAndBelongsToMany:
+    Enabled: false
+
+RSpec/InstanceVariable:
+    Enabled: false
+
