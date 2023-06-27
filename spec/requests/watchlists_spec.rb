@@ -44,7 +44,7 @@ RSpec.describe 'Watchlists' do
     end
 
     it 'creates a local db record if movie is not found there' do
-      expect { post '/watchlist/3' }.to(change { Movie.count })
+      expect { post '/watchlist/3' }.to(change(Movie, :count))
     end
 
     it 'puts the movie in the watchlist even if not found locally' do
