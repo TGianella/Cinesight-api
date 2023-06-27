@@ -1,10 +1,9 @@
 class WatchlistsController < ApplicationController
+  include ImportMovie
   before_action :authenticate_user!
   before_action :find_watchlist
   before_action only: %i[include_movie remove_movie] do
     @movie = find_movie(params[:movie_id])
-  rescue ActiveRecord::RecordNotFound
-    @movie = nil
   end
 
   def show
@@ -32,10 +31,12 @@ class WatchlistsController < ApplicationController
   private
 
   def find_watchlist
-    @watchlist = current_user.watchlist
+    @watchlist = current_user.watchlist || Watchlist.create(user: current_user)
   end
 
   def find_movie(movie_id)
     @movie = Movie.find(movie_id)
+  rescue ActiveRecord::RecordNotFound
+    @movie = import_movie_from_tmdb(movie_id)
   end
 end
