@@ -52,7 +52,7 @@ RSpec.describe 'Users' do
     end
 
     it 'deletes a user' do
-      expect { delete '/profile' }.to change { User.count }.by(-1)
+      expect { delete '/profile' }.to change(User, :count).by(-1)
     end
 
     it 'deletes the right user' do
