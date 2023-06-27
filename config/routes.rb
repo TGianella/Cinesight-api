@@ -19,7 +19,12 @@ Rails.application.routes.draw do
   get '/', to: 'movies#index'
   get '/movies', to: 'movies#search'
   get '/movie/:id', to: 'movies#show'
+
   get '/watchlist', to: 'watchlists#show'
   post '/watchlist/:movie_id', to: 'watchlists#include_movie'
   delete '/watchlist/:movie_id', to: 'watchlists#remove_movie'
+
+  get '/profile', to: 'users#show'
+  patch '/profile', to: 'users#update'
+  delete '/profile', to: 'users#delete'
 end
