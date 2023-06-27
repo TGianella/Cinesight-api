@@ -43,7 +43,11 @@ RSpec.describe 'Watchlists' do
       expect(@watchlist.movies).to include @test_movie
     end
 
-    it 'fetches the movie from TMDB if not in local db' do
+    it 'creates a local db record if movie is not found there' do
+      expect { post '/watchlist/3' }.to(change { Movie.count })
+    end
+
+    it 'puts the movie in the watchlist even if not found locally' do
       post '/watchlist/3'
       expect(@watchlist.movies).to include Movie.find(3)
     end
