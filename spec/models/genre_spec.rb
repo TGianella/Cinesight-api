@@ -15,6 +15,11 @@ RSpec.describe Genre do
     expect { subject.save }.to raise_error ActiveRecord::NotNullViolation
   end
 
+  it 'cannot create two records with the same id' do
+    described_class.create(id: 1, name: 'test')
+    expect { described_class.create(id: 1, name: 'test') }.to raise_error ActiveRecord::RecordNotUnique
+  end
+
   it 'can belong to movies' do
     subject = described_class.create(id: 1, name: 'test', movies: [@movie])
     expect(@movie.genres).to include subject

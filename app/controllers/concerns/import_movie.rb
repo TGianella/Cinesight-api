@@ -17,13 +17,7 @@ module ImportMovie
 
       details_body = parse_response(details_response)
 
-      genres = details_body[:genres]
-
-      genres.map! do |genre|
-        Genre.find_by(id: genre[:id]) ||
-          Genre.create(id: genre[:id], name: genre[:name])
-      end
-
+      genres = get_genres(details_body[:genres])
       director = get_director(movie_id)
 
       create_movie(details_body, director, genres)
@@ -67,6 +61,13 @@ module ImportMovie
 
     def get_director_from_credits(credits_body)
       credits_body[:crew].select { |crew_member| crew_member[:job] == 'Director' }.first
+    end
+
+    def get_genres(genres)
+      genres.map do |genre|
+        Genre.find_by(id: genre[:id]) ||
+          Genre.create(id: genre[:id], name: genre[:name])
+      end
     end
   end
 end
