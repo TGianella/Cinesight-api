@@ -6,19 +6,19 @@ RSpec.describe 'Users' do
     sign_in user
   end
 
-  describe 'GET /show' do
+  describe 'GET /profile' do
     it 'returns http success' do
-      get '/users/show'
+      get '/profile'
       expect(response).to have_http_status(:success)
     end
 
     it 'returns profile info' do
-      get '/users/show'
+      get '/profile'
       expect(response.parsed_body['email']).to eq 'test@test.com'
     end
 
     it 'does not return jti' do
-      get '/users/show'
+      get '/profile'
       expect(response.parsed_body).not_to have_key 'jti'
     end
   end

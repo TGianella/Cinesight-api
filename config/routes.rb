@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/watchlist/:movie_id', to: 'watchlists#include_movie'
   delete '/watchlist/:movie_id', to: 'watchlists#remove_movie'
 
-  get 'users/show', to: 'users#show'
-  put 'users/update', to: 'users#update'
-  delete 'users/delete', to: 'users#delete'
+  get '/profile', to: 'users#show'
+  put '/profile/update', to: 'users#update'
+  delete '/profile', to: 'users#delete'
 end
