@@ -19,7 +19,19 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete; end
+  def delete
+    if current_user.destroy
+      render json: {
+        status: 200,
+        message: 'deleted account successfully'
+      }, status: :ok
+    else
+      render json: {
+        status: 401,
+        message: "Couldn't find user account to delete"
+      }, status: :unauthorized
+    end
+  end
 
   def user_params
     params.require(:user).permit(:username, :email)

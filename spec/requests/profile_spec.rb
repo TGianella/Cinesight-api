@@ -23,32 +23,41 @@ RSpec.describe 'Users' do
     end
   end
 
-  describe 'PATCH /update' do
+  describe 'PATCH /profile' do
     it 'returns http success' do
-      patch '/profile/update', params: { user: { email: 'test2@test.com', username: 'test2' } }
+      patch '/profile', params: { user: { email: 'test2@test.com', username: 'test2' } }
       expect(response).to have_http_status(:success)
     end
 
     it 'updates email' do
-      patch '/profile/update', params: { user: { email: 'test2@test.com' } }
+      patch '/profile', params: { user: { email: 'test2@test.com' } }
       expect(@user.email).to eq 'test2@test.com'
     end
 
     it 'updates username' do
-      patch '/profile/update', params: { user: { username: 'test2' } }
+      patch '/profile', params: { user: { username: 'test2' } }
       expect(@user.username).to eq 'test2'
     end
 
     it 'returns 422 when update fails' do
-      patch '/profile/update', params: { user: { email: 'test2' } }
+      patch '/profile', params: { user: { email: 'test2' } }
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end
-  #
-  # describe 'GET /delete' do
-  #   it 'returns http success' do
-  #     get '/users/delete'
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+
+  describe 'delete /profile' do
+    it 'returns http success' do
+      delete '/profile'
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'deletes a user' do
+      expect { delete '/profile' }.to change { User.count }.by(-1)
+    end
+
+    it 'deletes the right user' do
+      delete '/profile'
+      expect { @user.reload }.to raise_error ActiveRecord::RecordNotFound
+    end
+  end
 end
