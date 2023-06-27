@@ -9,7 +9,11 @@ RSpec.describe User do
   it 'creates a user' do
     user = described_class.new(email: 'jean-bonneau@test.fr', password: 'foobar')
     expect(user.save).to be true
-    user.destroy
+  end
+
+  it 'can have a username' do
+    subject = described_class.create(email: 'test@test.com', password: 'foobar', username: 'test')
+    expect(subject.username).to eq 'test'
   end
 
   it 'does not validate with a short password' do
