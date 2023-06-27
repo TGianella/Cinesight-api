@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  after_create :welcome_send
+
   include Devise::JWT::RevocationStrategies::JTIMatcher
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -8,4 +10,8 @@ class User < ApplicationRecord
 
   has_one :watchlist, dependent: :destroy
   after_create :create_watchlist
+
+  def welcome_send
+    SignupMailer.welcome_email(self).deliver_now
+  end
 end
