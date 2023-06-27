@@ -21,4 +21,11 @@ RSpec.describe Movie do
     movie = described_class.new(id: 1, title: 'test')
     expect { movie.save }.to raise_error ActiveRecord::RecordNotUnique
   end
+
+  it 'can belong to a watchlist' do
+    user = User.create(email: 'test@test.com', password: 'foobar')
+    watchlist = user.watchlist
+    subject = described_class.create(id: 1, title: 'test', watchlists: [watchlist])
+    expect(watchlist.movies).to include subject
+  end
 end
