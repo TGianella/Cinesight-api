@@ -6,6 +6,6 @@ class SignupMailer < ApplicationMailer
 
     @url = 'https://cinesight.vercel.app/login'
 
-    mail(to: @user.email, subject: 'Bienvenue chez Cinesight')
+    mail(to: @user.email, subject: I18n.t('signup_mailer.welcome_subject'))
   end
 end
