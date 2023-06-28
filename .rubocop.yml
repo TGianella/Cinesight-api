@@ -10,6 +10,7 @@ AllCops:
 Metrics/BlockLength: 
   Exclude: 
     - spec/**/*
+    - app/controllers/concerns/*
 
 Rails/NotNullColumn:
     Exclude:
@@ -17,3 +18,17 @@ Rails/NotNullColumn:
 
 Style/Documentation:
     Enabled: false
+
+RSpec/AnyInstance:
+    Enabled: false
+
+Rails/HasAndBelongsToMany:
+    Enabled: false
+
+RSpec/InstanceVariable:
+    Enabled: false
+
+Rails/SkipsModelValidations:
+    Exclude:
+        - db/migrate/20230627074331_add_service_name_to_active_storage_blobs.active_storage.rb
+
