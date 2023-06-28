@@ -1,6 +1,6 @@
 ![Notre bannière]()
 <br><br>
-<h1 align="center"><strong>COOKIN</strong></h1>
+<h1 align="center"><strong>Cinesight</strong></h1>
 <br>
 
 Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
@@ -9,47 +9,80 @@ Backend : ![GitHub code size in bytes](https://img.shields.io/github/languages/c
 
 <br><br>
 
-## <ins>Comment ça marche</ins>
+## <ins>Features</ins>
 
 <br><br>
 
-## <ins>Fonctionnalités clés</ins>
+## <ins>Technical stack</ins>
 
-<br><br>
-
-## <ins>Technologies utilisées</ins>
-
-Backend: Ruby on Rails 7HTML, CSS
-Base de données: PostgreSQL
+Backend: Ruby on Rails 7, HTML, CSS
+Database: PostgreSQL
 Frontend: React
+CI/CD : GitHub Actions, Heroku
 <br><br>
 
-## <ins>Comment l'installer</ins>
+## <ins>Installation</ins>
 
-* Clonez le repo
-* Pense à démarrer le service postgresql si tu utilises WSL &rarr; `sudo service postgresql start`
-* Lance `bundle install`
-* Puis `rails db:create db:migrate db:seed`
+* Clone repo
+* `cd cinesight-api`
+* `bundle install`
+* `rails db:create db:migrate`
+* `rails server`
 <br><br>
 
-## <ins>Comment contribuer</ins>
+## <ins>How to contribute</ins>
 
-Nous sommes toujours à la recherche de nouvelles fonctionnalités à ajouter à notre application de cours de cuisine partagés. Si vous souhaitez contribuer à notre projet, veuillez ouvrir une nouvelle branche à partir de la branche develop, faites les modifications et soumettez une pull request.
+We are always on the lookout for new features to add to our watchlist app. If you feel like contributing, please open a new branch and open a pull request when your changes are made.
 <br><br>
 
-## <ins>Auteurs</ins>
+## <ins>Authors</ins>
 
 * [@TGianella](https://www.github.com/TGianella)
 * [@Steakinzer](https://www.github.com/Steakinzer)
 * [@1996thomas](https://www.github.com/1996thomas)
 * [@rockethelll](https://www.github.com/rockethelll)
 
-N'hésitez pas à nous contacter si vous avez des questions ou des commentaires sur notre application !
+Feel free to contact us if you have any question about the app.
 <br><br>
 
-## <ins>Nos outils pour la gestion du projet</ins>
+## <ins>Project management tools</ins>
 
-* [Trello](https://trello.com/b/K0H8ZPQU) : user stories
-* [Whimsical](https://whimsical.com/parcours-utilisateur-Wqg2fZEow2535espEW9egw) : parcours utilisateur
-* [Whimsical](https://whimsical.com/model-database-6yUWh4riNHEPfV6GU75b8H) : moldèle de base de données
-* [Notion](https://www.notion.so/Cookin-Project-fae7a1b93f7341a48df5ab2f0eddf402) : gestion du projet
+* [Notion](https://guttural-baboon-df4.notion.site/Cine-Sight-59b7ebc3f04c41db8a5efc3b0b9e3c3c)
+
+## API documentation
+
+**Current user**
+----
+  Fetches info about the currently logged in user
+
+* **URL**
+
+  <_/current_user_>
+
+* **Method:**
+
+  `GET`
+
+* **Required header**
+
+  * **Key** Authorization
+    **Content:** `Bearer JWT` where JWT is the token sent back after successful login or signup
+    
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:** `{ id : integer, email : string, username : string, created_at : date }`
+ 
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "Signature has expired" }`
+
+* **Sample Call:**
+
+`curl --location 'http://127.0.0.1:4000/current_user' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2YmM4MGVhZS1kZmUxLTQ0ZTctODFkMy1jMmZhOWY0Njk3NmIiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3ODEyMjQ3LCJleHAiOjE2ODc4MTQwNDd9.Va6C1yUg8VBUO6B-KxtMXbPTVKSMT8ntjUd0RRx0dqg' \
+--data ''`
+
+* **Notes:**
+
