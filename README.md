@@ -1,41 +1,38 @@
-![Notre bannière]()
-<br><br>
 <h1 align="center"><strong>Cinesight</strong></h1>
 <br>
 
-Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
-<br><br>
-Backend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TGianella/Cinesight-api)
+* Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
+* Backend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TGianella/Cinesight-api)
 
-<br><br>
+## Documentation
 
-## <ins>Features</ins>
+[API documentation](API-documentation.md)
 
-<br><br>
+## Features
 
-## <ins>Technical stack</ins>
+- Queries movies from [TMDB](https://www.themoviedb.org/) and records them in a local database when users look for them, populating the local database as needed.
+- Users can put movies in and out of their watchlist.
 
-Backend: Ruby on Rails 7, HTML, CSS
-Database: PostgreSQL
-Frontend: React
-CI/CD : GitHub Actions, Heroku
-<br><br>
+## Stack
 
-## <ins>Installation</ins>
+- Backend: Rails 7
+- Database: PostgreSQL
+- Frontend: React.js
+- CI/CD : GitHub Actions, Heroku
+
+## Installation
 
 * Clone repo
 * `cd cinesight-api`
 * `bundle install`
 * `rails db:create db:migrate`
 * `rails server`
-<br><br>
 
-## <ins>How to contribute</ins>
+## How to contribute
 
 We are always on the lookout for new features to add to our watchlist app. If you feel like contributing, please open a new branch and open a pull request when your changes are made.
-<br><br>
 
-## <ins>Authors</ins>
+## Authors
 
 * [@TGianella](https://www.github.com/TGianella)
 * [@Steakinzer](https://www.github.com/Steakinzer)
@@ -43,46 +40,12 @@ We are always on the lookout for new features to add to our watchlist app. If yo
 * [@rockethelll](https://www.github.com/rockethelll)
 
 Feel free to contact us if you have any question about the app.
-<br><br>
 
-## <ins>Project management tools</ins>
+## Project management
 
 * [Notion](https://guttural-baboon-df4.notion.site/Cine-Sight-59b7ebc3f04c41db8a5efc3b0b9e3c3c)
 
-## API documentation
+## Credits
 
-**Current user**
-----
-  Fetches info about the currently logged in user
-
-* **URL**
-
-  <_/current_user_>
-
-* **Method:**
-
-  `GET`
-
-* **Required header**
-
-  * **Key** Authorization
-    **Content:** `Bearer JWT` where JWT is the token sent back after successful login or signup
-    
-* **Success Response:**
-  
-  * **Code:** 200 <br />
-    **Content:** `{ id : integer, email : string, username : string, created_at : date }`
- 
-* **Error Response:**
-
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Signature has expired" }`
-
-* **Sample Call:**
-
-`curl --location 'http://127.0.0.1:4000/current_user' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2YmM4MGVhZS1kZmUxLTQ0ZTctODFkMy1jMmZhOWY0Njk3NmIiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3ODEyMjQ3LCJleHAiOjE2ODc4MTQwNDd9.Va6C1yUg8VBUO6B-KxtMXbPTVKSMT8ntjUd0RRx0dqg' \
---data ''`
-
-* **Notes:**
+All movie data comes from [TMDB](https://www.themoviedb.org/).
 
