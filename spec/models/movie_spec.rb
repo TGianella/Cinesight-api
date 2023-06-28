@@ -28,4 +28,10 @@ RSpec.describe Movie do
     subject = described_class.create(id: 1, title: 'test', watchlists: [watchlist])
     expect(watchlist.movies).to include subject
   end
+
+  it 'can belong to a genre' do
+    genre = Genre.create(id: 1, name: 'test')
+    subject = described_class.create(id: 1, title: 'test', genres: [genre])
+    expect(genre.movies).to include subject
+  end
 end
