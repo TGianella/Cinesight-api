@@ -1,8 +1,29 @@
 class MoviesController < ApplicationController
   include ImportMovie
 
-  def index
+  def now_playing
     url = 'https://api.themoviedb.org/3/movie/now_playing'
+    response = query_external_db(url)
+
+    render json: response
+  end
+
+  def popular
+    url = 'https://api.themoviedb.org/3/movie/popular'
+    response = query_external_db(url)
+
+    render json: response
+  end
+
+  def top_rated
+    url = 'https://api.themoviedb.org/3/movie/top_rated'
+    response = query_external_db(url)
+
+    render json: response
+  end
+
+  def upcoming
+    url = 'https://api.themoviedb.org/3/movie/upcoming'
     response = query_external_db(url)
 
     render json: response
