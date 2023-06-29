@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  signup_mailer:
+    welcome_subject: 'Bienvenue chez Cinesight'

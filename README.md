@@ -1,55 +1,51 @@
-![Notre bannière]()
-<br><br>
-<h1 align="center"><strong>COOKIN</strong></h1>
+<h1 align="center"><strong>Cinesight</strong></h1>
 <br>
 
-Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
-<br><br>
-Backend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TGianella/Cinesight-api)
+* Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
+* Backend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TGianella/Cinesight-api)
 
-<br><br>
+## Documentation
 
-## <ins>Comment ça marche</ins>
+[API documentation](API-documentation.md)
 
-<br><br>
+## Features
 
-## <ins>Fonctionnalités clés</ins>
+- Queries movies from [TMDB](https://www.themoviedb.org/) and records them in a local database when users look for them, populating the local database as needed.
+- Users can put movies in and out of their watchlist.
 
-<br><br>
+## Stack
 
-## <ins>Technologies utilisées</ins>
+- Backend: Rails 7
+- Database: PostgreSQL
+- Frontend: React.js
+- CI/CD : GitHub Actions, Heroku
 
-Backend: Ruby on Rails 7HTML, CSS
-Base de données: PostgreSQL
-Frontend: React
-<br><br>
+## Installation
 
-## <ins>Comment l'installer</ins>
+* Clone repo
+* `cd cinesight-api`
+* `bundle install`
+* `rails db:create db:migrate`
+* `rails server`
 
-* Clonez le repo
-* Pense à démarrer le service postgresql si tu utilises WSL &rarr; `sudo service postgresql start`
-* Lance `bundle install`
-* Puis `rails db:create db:migrate db:seed`
-<br><br>
+## How to contribute
 
-## <ins>Comment contribuer</ins>
+We are always on the lookout for new features to add to our watchlist app. If you feel like contributing, please open a new branch and open a pull request when your changes are made.
 
-Nous sommes toujours à la recherche de nouvelles fonctionnalités à ajouter à notre application de cours de cuisine partagés. Si vous souhaitez contribuer à notre projet, veuillez ouvrir une nouvelle branche à partir de la branche develop, faites les modifications et soumettez une pull request.
-<br><br>
-
-## <ins>Auteurs</ins>
+## Authors
 
 * [@TGianella](https://www.github.com/TGianella)
 * [@Steakinzer](https://www.github.com/Steakinzer)
 * [@1996thomas](https://www.github.com/1996thomas)
 * [@rockethelll](https://www.github.com/rockethelll)
 
-N'hésitez pas à nous contacter si vous avez des questions ou des commentaires sur notre application !
-<br><br>
+Feel free to contact us if you have any question about the app.
 
-## <ins>Nos outils pour la gestion du projet</ins>
+## Project management
 
-* [Trello](https://trello.com/b/K0H8ZPQU) : user stories
-* [Whimsical](https://whimsical.com/parcours-utilisateur-Wqg2fZEow2535espEW9egw) : parcours utilisateur
-* [Whimsical](https://whimsical.com/model-database-6yUWh4riNHEPfV6GU75b8H) : moldèle de base de données
-* [Notion](https://www.notion.so/Cookin-Project-fae7a1b93f7341a48df5ab2f0eddf402) : gestion du projet
+* [Notion](https://guttural-baboon-df4.notion.site/Cine-Sight-59b7ebc3f04c41db8a5efc3b0b9e3c3c)
+
+## Credits
+
+All movie data comes from [TMDB](https://www.themoviedb.org/).
+
