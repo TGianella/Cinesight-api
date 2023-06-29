@@ -15,6 +15,9 @@
   - [Delete profile](#delete-profile)
 - [Movies](#movies)
   - [Now playing](#now-playing)
+  - [Popular](#popular)
+  - [Top rated](#top-rated)
+  - [Upcoming](#upcoming)
   - [Search](#search)
   - [Show movie details](#show-movie-details)
 - [Watchlists](#watchlists)
@@ -431,7 +434,7 @@
 
 * **URL**
 
-  `/`
+  `/movies/now_playing`
 
 * **Method:**
 
@@ -502,7 +505,246 @@
 * **Sample Call:**
 
 ```
-  curl --location 'http://127.0.0.1:4000/' \
+  curl --location 'http://127.0.0.1:4000/movies/now_playing' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
+  --data ''
+```
+
+***Popular***
+----
+  Fetches and returns a list of movies ordered by popularity.
+
+* **URL**
+
+  `/movies/popular`
+
+* **Method:**
+
+  `GET`
+    
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:**
+    ```JSON
+      {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/e2Jd0sYMCe6qvMbswGQbM0Mzxt0.jpg",
+                "genre_ids": [
+                    28,
+                    80,
+                    53
+                ],
+                "id": 385687,
+                "original_language": "en",
+                "original_title": "Fast X",
+                "overview": "Over many missions and against impossible odds, Dom Toretto and his family have outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom loves, forever.",
+                "popularity": 4052.245,
+                "poster_path": "/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
+                "release_date": "2023-05-17",
+                "title": "Fast X",
+                "video": false,
+                "vote_average": 7.3,
+                "vote_count": 2141
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/fhquRW28vRZHr26orSaFFnhYIA0.jpg",
+                "genre_ids": [
+                    28,
+                    53
+                ],
+                "id": 697843,
+                "original_language": "en",
+                "original_title": "Extraction 2",
+                "overview": "Tasked with extracting a family who is at the mercy of a Georgian gangster, Tyler Rake infiltrates one of the world's deadliest prisons in order to save them. But when the extraction gets hot, and the gangster dies in the heat of battle, his equally ruthless brother tracks down Rake and his team to Vienna, in order to get revenge.",
+                "popularity": 2167.075,
+                "poster_path": "/7gKI9hpEMcZUQpNgKrkDzJpbnNS.jpg",
+                "release_date": "2023-06-09",
+                "title": "Extraction 2",
+                "video": false,
+                "vote_average": 7.6,
+                "vote_count": 948
+            },
+            {...}
+        ],
+        "total_pages": 38904,
+        "total_results": 778063
+      }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
+
+* **Sample Call:**
+
+```
+  curl --location 'http://127.0.0.1:4000/movies/popular' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
+  --data ''
+```
+
+***Top rated***
+----
+  Fetches and returns a list of movies ordered by rating.
+
+* **URL**
+
+  `/movies/top_rated`
+
+* **Method:**
+
+  `GET`
+    
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:**
+    ```JSON
+      {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
+                "genre_ids": [
+                    18,
+                    80
+                ],
+                "id": 238,
+                "original_language": "en",
+                "original_title": "The Godfather",
+                "overview": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
+                "popularity": 122.345,
+                "poster_path": "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+                "release_date": "1972-03-14",
+                "title": "The Godfather",
+                "video": false,
+                "vote_average": 8.7,
+                "vote_count": 18146
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg",
+                "genre_ids": [
+                    18,
+                    80
+                ],
+                "id": 278,
+                "original_language": "en",
+                "original_title": "The Shawshank Redemption",
+                "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
+                "popularity": 102.647,
+                "poster_path": "/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg",
+                "release_date": "1994-09-23",
+                "title": "The Shawshank Redemption",
+                "video": false,
+                "vote_average": 8.7,
+                "vote_count": 24024
+            },
+            {...}
+        ],
+        "total_pages": 560,
+        "total_results": 11192
+      }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
+
+* **Sample Call:**
+
+```
+  curl --location 'http://127.0.0.1:4000/movies/top_rated' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
+  --data ''
+```
+
+***Upcoming***
+----
+  Fetches and returns a list of popular upcoming movies.
+
+* **URL**
+
+  `/movies/upcoming`
+
+* **Method:**
+
+  `GET`
+    
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:**
+    ```JSON
+      {
+        "dates": {
+            "maximum": "2023-07-26",
+            "minimum": "2023-07-05"
+        },
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg",
+                "genre_ids": [
+                    16,
+                    35,
+                    10751,
+                    14,
+                    10749
+                ],
+                "id": 976573,
+                "original_language": "en",
+                "original_title": "Elemental",
+                "overview": "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
+                "popularity": 1178.288,
+                "poster_path": "/8riWcADI1ekEiBguVB9vkilhiQm.jpg",
+                "release_date": "2023-06-14",
+                "title": "Elemental",
+                "video": false,
+                "vote_average": 7.4,
+                "vote_count": 223
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/fEe2csLOUsTyaLdCccVJfFeJzhx.jpg",
+                "genre_ids": [
+                    878,
+                    28,
+                    12
+                ],
+                "id": 298618,
+                "original_language": "en",
+                "original_title": "The Flash",
+                "overview": "When his attempt to save his family inadvertently alters the future, Barry Allen becomes trapped in a reality in which General Zod has returned and there are no Super Heroes to turn to. In order to save the world that he is in and return to the future that he knows, Barry's only hope is to race for his life. But will making the ultimate sacrifice be enough to reset the universe?",
+                "popularity": 891.684,
+                "poster_path": "/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",
+                "release_date": "2023-06-13",
+                "title": "The Flash",
+                "video": false,
+                "vote_average": 6.7,
+                "vote_count": 658
+            },
+        ],
+        "total_pages": 16,
+        "total_results": 319
+      }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
+
+* **Sample Call:**
+
+```
+  curl --location 'http://127.0.0.1:4000/movies/upcoming' \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
   --data ''
 ```
@@ -513,7 +755,7 @@
 
 * **URL**
 
-  `/movies?query=`
+  `/movies/search?query=`
 
 * **Method:**
 
@@ -584,7 +826,7 @@
 * **Sample Call:**
 
 ```
-  curl --location 'http://127.0.0.1:4000/movies?query=test' \
+  curl --location 'http://127.0.0.1:4000/movies/search?query=test' \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
   --data ''
 ```
