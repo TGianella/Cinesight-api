@@ -13,6 +13,7 @@ class Movie < ApplicationRecord
            overview: details_body[:overview],
            release_date: details_body[:release_date],
            tagline: details_body[:tagline],
+           runtime: details_body[:runtime],
            director: director[:name],
            genres: genres)
   end
