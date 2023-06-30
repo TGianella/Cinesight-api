@@ -2,28 +2,28 @@ class MoviesController < ApplicationController
   include ImportMovie
 
   def now_playing
-    url = 'https://api.themoviedb.org/3/movie/now_playing'
+    url = 'https://api.themoviedb.org/3/movie/now_playing?language=fr-FR&page=1'
     response = query_external_db(url)
 
     render json: response
   end
 
   def popular
-    url = 'https://api.themoviedb.org/3/movie/popular'
+    url = 'https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1'
     response = query_external_db(url)
 
     render json: response
   end
 
   def top_rated
-    url = 'https://api.themoviedb.org/3/movie/top_rated'
+    url = 'https://api.themoviedb.org/3/movie/top_rated?language=fr-FR&page=1'
     response = query_external_db(url)
 
     render json: response
   end
 
   def upcoming
-    url = 'https://api.themoviedb.org/3/movie/upcoming'
+    url = 'https://api.themoviedb.org/3/movie/upcoming?language=fr-FR&page=1'
     response = query_external_db(url)
 
     render json: response
@@ -31,7 +31,7 @@ class MoviesController < ApplicationController
 
   def similar
     movie_id = params[:id]
-    url = "https://api.themoviedb.org/3/movie/#{movie_id}/similar"
+    url = "https://api.themoviedb.org/3/movie/#{movie_id}/similar?language=fr-FR&page=1"
     response = query_external_db(url)
 
     render json: response
