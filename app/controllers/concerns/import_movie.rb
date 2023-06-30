@@ -10,14 +10,12 @@ module ImportMovie
     end
 
     def import_movie_from_tmdb(movie_id)
-      puts 'querying db'
       details_url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
       details_response = query_external_db(details_url)
 
       return if details_response.blank?
 
       details_body = parse_response(details_response)
-      puts details_body
 
       genres = get_genres(details_body[:genres])
       director = get_director(movie_id)
