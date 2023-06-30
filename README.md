@@ -1,3 +1,4 @@
+![Notre bannière](https://i.imgur.com/kaWOexo.png)
 <h1 align="center"><strong>Cinesight</strong></h1>
 <br>
 
