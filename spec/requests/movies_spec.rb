@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Movies' do
-  describe 'GET /' do
+  describe 'GET /now_playing' do
     before do
-      get '/'
+      get '/movies/now_playing'
     end
 
     it 'responds with ok status' do
@@ -19,9 +19,99 @@ RSpec.describe 'Movies' do
     end
   end
 
-  describe 'GET /movies' do
+  describe 'GET /popular' do
     before do
-      get '/movies?query=test'
+      get '/movies/popular'
+    end
+
+    it 'responds with ok status' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'contains a results key' do
+      expect(response.parsed_body).to have_key('results')
+    end
+
+    it 'contains at least one movie' do
+      expect(response.parsed_body['results']).not_to be_empty
+    end
+  end
+
+  describe 'GET /top_rated' do
+    before do
+      get '/movies/top_rated'
+    end
+
+    it 'responds with ok status' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'contains a results key' do
+      expect(response.parsed_body).to have_key('results')
+    end
+
+    it 'contains at least one movie' do
+      expect(response.parsed_body['results']).not_to be_empty
+    end
+  end
+
+  describe 'GET /upcoming' do
+    before do
+      get '/movies/upcoming'
+    end
+
+    it 'responds with ok status' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'contains a results key' do
+      expect(response.parsed_body).to have_key('results')
+    end
+
+    it 'contains at least one movie' do
+      expect(response.parsed_body['results']).not_to be_empty
+    end
+  end
+
+  describe 'GET /movie/:id/similar' do
+    before do
+      get '/movie/2/similar'
+    end
+
+    it 'responds with ok status' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'contains a results key' do
+      expect(response.parsed_body).to have_key('results')
+    end
+
+    it 'contains at least one movie' do
+      expect(response.parsed_body['results']).not_to be_empty
+    end
+  end
+
+  describe 'GET /movies/discover' do
+    before do
+      get '/movies/discover?genre_id=80'
+    end
+
+    it 'responds with ok status' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'contains a results key' do
+      expect(response.parsed_body).to have_key('results')
+    end
+
+    it 'contains at least one movie' do
+      expect(response.parsed_body['results']).not_to be_empty
+    end
+  end
+
+  describe 'GET /search' do
+    before do
+      get '/movies/search?query=test'
     end
 
     it 'responds with ok status' do

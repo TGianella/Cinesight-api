@@ -27,9 +27,9 @@ class UsersController < ApplicationController
       }, status: :ok
     else
       render json: {
-        status: 401,
+        status: 404,
         message: "Couldn't find user account to delete"
-      }, status: :unauthorized
+      }, status: :not_found
     end
   end
 

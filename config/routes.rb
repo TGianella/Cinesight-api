@@ -16,9 +16,14 @@ Rails.application.routes.draw do
                passwords: 'users/passwords'
              }
 
-  get '/', to: 'movies#index'
-  get '/movies', to: 'movies#search'
+  get '/movies/now_playing', to: 'movies#now_playing'
+  get '/movies/popular', to: 'movies#popular'
+  get '/movies/top_rated', to: 'movies#top_rated'
+  get '/movies/upcoming', to: 'movies#upcoming'
+  get '/movies/search', to: 'movies#search'
+  get '/movies/discover', to: 'movies#discover'
   get '/movie/:id', to: 'movies#show'
+  get '/movie/:id/similar', to: 'movies#similar'
 
   get '/watchlist', to: 'watchlists#show'
   post '/watchlist/:movie_id', to: 'watchlists#include_movie'
