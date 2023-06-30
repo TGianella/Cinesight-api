@@ -57,6 +57,7 @@ class MoviesController < ApplicationController
     movie_id = params[:id]
     movie = Movie.find_by(id: movie_id)
     if movie
+      movie = update_runtime(movie_id) if movie.runtime.blank?
       movie = update_director(movie_id) if movie.director.blank?
       render json: movie, include: { genres: { only: %i[id name] } }
       return

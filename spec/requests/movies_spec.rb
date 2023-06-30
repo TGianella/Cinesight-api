@@ -134,7 +134,7 @@ RSpec.describe 'Movies' do
     end
 
     it 'returns without querying TMDB if movie is in local db' do
-      Movie.create(id: 226_979, title: 'test', director: 'Chris Mason Johnson')
+      Movie.create(id: 226_979, title: 'test', director: 'Chris Mason Johnson', runtime: 89)
       expect_any_instance_of(MoviesController).not_to receive(:query_external_db)
       get '/movie/226979'
     end
@@ -179,6 +179,22 @@ RSpec.describe 'Movies' do
       Movie.create(id: 226_979, title: 'test')
       get '/movie/226979'
       expect(response.parsed_body['director']).to eq('Chris Mason Johnson')
+    end
+
+    it 'returns a movie with a runtime' do
+      get '/movie/226979'
+      expect(response.parsed_body['runtime']).not_to be_nil
+    end
+
+    it 'returns a movie with the right runtime' do
+      get '/movie/226979'
+      expect(response.parsed_body['runtime']).to eq(79)
+    end
+
+    it 'updates movie in local db with runtime if runtime is not found' do
+      Movie.create(id: 226_979, title: 'test')
+      get '/movie/226979'
+      expect(response.parsed_body['runtime']).to eq(79)
     end
 
     it 'returns a movie with genres' do

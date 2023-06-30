@@ -10,12 +10,14 @@ module ImportMovie
     end
 
     def import_movie_from_tmdb(movie_id)
+      puts 'querying db'
       details_url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
       details_response = query_external_db(details_url)
 
       return if details_response.blank?
 
       details_body = parse_response(details_response)
+      puts details_body
 
       genres = get_genres(details_body[:genres])
       director = get_director(movie_id)
@@ -29,8 +31,20 @@ module ImportMovie
 
     def update_director(movie_id)
       director = get_director(movie_id)
+      update_field(movie_id, { director: director[:name] })
+    end
+
+    def update_runtime(movie_id)
+      details_url = "https://api.themoviedb.org/3/movie/#{movie_id}?language=fr-FR"
+      details_response = query_external_db(details_url)
+      details_body = parse_response(details_response)
+      runtime = details_body[:runtime]
+      update_field(movie_id, { runtime: runtime })
+    end
+
+    def update_field(movie_id, update_data)
       movie = Movie.find(movie_id)
-      movie.update(director: director[:name])
+      movie.update(update_data)
       movie.reload
       movie
     end
