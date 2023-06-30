@@ -18,7 +18,9 @@
   - [Popular](#popular)
   - [Top rated](#top-rated)
   - [Upcoming](#upcoming)
+  - [Similar](#similar)
   - [Search](#search)
+  - [Discover](#discover)
   - [Show movie details](#show-movie-details)
 - [Watchlists](#watchlists)
   - [Show watchlist](#show-watchlist)
@@ -749,6 +751,92 @@
   --data ''
 ```
 
+***Similar***
+----
+  Fetches and returns a list of movies with genres and keywords related to the movie given in params.
+
+* **URL**
+
+  `/movie/:id/similar`
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+   **Required:**
+ 
+   `id = [integer]`
+    
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:**
+    ```JSON
+      {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/2EP1eHLVHglH7OrUALPYEZqVVfV.jpg",
+                "genre_ids": [
+                    16,
+                    18,
+                    14,
+                    10751
+                ],
+                "id": 33108,
+                "original_language": "ru",
+                "original_title": "Бременские музыканты",
+                "overview": "A musical film about the adventures of the wandering musicians from Bremen such as Troubadour, Donkey, Dog, Cat and Rooster. In one of the towns Troubadour falls in love with a Princess and makes up a plan how to get the King's confidence.",
+                "popularity": 4.507,
+                "poster_path": "/wQUOnyfVb9pc8GwGZNriZ2Q0QC6.jpg",
+                "release_date": "1969-10-10",
+                "title": "The Bremen Town Musicians",
+                "video": false,
+                "vote_average": 6.9,
+                "vote_count": 80
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/xb9I042F9WdwGUtbShR6HU0e2yT.jpg",
+                "genre_ids": [
+                    18,
+                    35
+                ],
+                "id": 638240,
+                "original_language": "tl",
+                "original_title": "Miracle in Cell No. 7",
+                "overview": "Joselito is a mentally-challenged man who is wrongfully charged with sexually assaulting and murdering a little girl. In prison, he becomes friends with his fellow inmates and together they form a plan to smuggle his young daughter inside the cell! Years after, his daughter becomes a lawyer and is determined to prove her father's innocence.",
+                "popularity": 6.053,
+                "poster_path": "/4FPlIQWRUSVEpuda19izUDO2GKr.jpg",
+                "release_date": "2019-12-25",
+                "title": "Miracle in Cell No. 7",
+                "video": false,
+                "vote_average": 7.2,
+                "vote_count": 23
+            },
+        ],
+        "total_pages": 79,
+        "total_results": 1563
+      }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
+
+  * **Code:** 404 NOT FOUND <br/>
+
+* **Sample Call:**
+
+```
+  curl --location 'http://127.0.0.1:4000/movie/2/similar' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
+  --data ''
+```
+
 ***Search***
 ----
   Fetches and returns a list of movies related to the query string provided.
@@ -831,6 +919,90 @@
   --data ''
 ```
 
+***Discover***
+----
+  Fetches and returns a list of movies of the genre provided.
+
+* **URL**
+
+  `/movies/discover?genre_id=`
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+   **Required:**
+ 
+   `genre_id=[integer]`
+    
+* **Success Response:**
+  
+  * **Code:** 200 <br />
+    **Content:**
+    ```JSON
+      {
+        "page": 1,
+        "results": [
+            {
+                "adult": false,
+                "backdrop_path": "/e2Jd0sYMCe6qvMbswGQbM0Mzxt0.jpg",
+                "genre_ids": [
+                    28,
+                    80,
+                    53
+                ],
+                "id": 385687,
+                "original_language": "en",
+                "original_title": "Fast X",
+                "overview": "Après bien des missions et contre toute attente, Dom Toretto et sa famille ont su déjouer, devancer, surpasser et distancer tous les adversaires qui ont croisé leur route. Ils sont aujourd’hui face à leur ennemi le plus terrifiant et le plus intime : émergeant des brumes du passé, ce revenant assoiffé de vengeance est bien déterminé à décimer la famille en réduisant à néant tout ce à quoi, et surtout à qui Dom ait jamais tenu.",
+                "popularity": 4052.245,
+                "poster_path": "/7Br9F8EHrtNT2hFgD5oTfDMRgud.jpg",
+                "release_date": "2023-05-17",
+                "title": "Fast & Furious X",
+                "video": false,
+                "vote_average": 7.3,
+                "vote_count": 2141
+            },
+            {
+                "adult": false,
+                "backdrop_path": "/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg",
+                "genre_ids": [
+                    28,
+                    53,
+                    80
+                ],
+                "id": 603692,
+                "original_language": "en",
+                "original_title": "John Wick: Chapter 4",
+                "overview": "John Wick affronte ses adversaires les plus redoutables dans ce quatrième volet de la série.  De New York à Osaka, en passant par Paris et Berlin, John Wick mène un combat contre la Grande Table, la terrible organisation criminelle qui a mis sa tête à prix, en affrontant ses tueurs les plus dangereux...",
+                "popularity": 1760.415,
+                "poster_path": "/jAMVKvqxdNbUY2YQWhCclYI6coP.jpg",
+                "release_date": "2023-03-22",
+                "title": "John Wick : Chapitre 4",
+                "video": false,
+                "vote_average": 7.9,
+                "vote_count": 3362
+            },
+        ],
+        "total_pages": 1451,
+        "total_results": 29004
+      }
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
+
+* **Sample Call:**
+
+```
+  curl --location 'http://127.0.0.1:4000/movies/discover?genre_id=80' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3YTJkZWFkNC1jNmFiLTQyYzAtYWIyNi0yZTU0MGZhNDgyYmYiLCJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjg3OTU0Mjk5LCJleHAiOjE2ODc5NTYwOTl9.ufvWrrxGwhJIJqeAvnpOSlkkx7MosoOQYH786lLDp_U' \
+  --data ''
+```
+
 ***Show movie details***
 ----
   Fetches and returns details for a given movie.
@@ -887,6 +1059,8 @@
 * **Error Response:**
 
   * **Code:** 500 INTERNAL SERVER ERROR <br />
+
+  * **Code:** 404 NOT FOUND <br/>
 
 * **Sample Call:**
 
