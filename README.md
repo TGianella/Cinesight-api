@@ -1,5 +1,5 @@
 ![Notre bannière](https://i.imgur.com/kaWOexo.png)
-<h1 align="center"><strong>Cinesight</strong></h1>
+<h1 align="center"><strong>[Cinesight](https://cinesight.vercel.app/)</strong></h1>
 <br>
 
 * Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
@@ -13,6 +13,7 @@
 
 - Queries movies from [TMDB](https://www.themoviedb.org/) and records them in a local database when users look for them, populating the local database as needed.
 - Users can put movies in and out of their watchlist.
+- Users can search movies by title or browse by genre and see a variety of curated lists.
 
 ## Stack
 
