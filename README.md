@@ -1,5 +1,5 @@
 ![Notre bannière](https://i.imgur.com/kaWOexo.png)
-<h1 align="center"><strong>[Cinesight](https://cinesight.vercel.app/)</strong></h1>
+#[Cinesight](https://cinesight.vercel.app/)
 <br>
 
 * Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
