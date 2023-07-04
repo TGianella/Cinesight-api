@@ -2,9 +2,10 @@
 # [Cinesight](https://cinesight.vercel.app/)
 <br>
 
-[🍿 See the website this API serves in production ! 🍿](https://cinesight.vercel.app/)
-* Frontend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
-* Backend : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TGianella/Cinesight-api)
+[🍿 See the website this API serves in production ! 🍿](https://cinesight.vercel.app/) <br/>
+[✨ Front-end repo ✨](https://github.com/rockethelll/Cinesight)
+* Front-end : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rockethelll/Cinesight)
+* Back-end : ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TGianella/Cinesight-api)
 
 ## Documentation
 
@@ -20,9 +21,9 @@
 
 - Back-end: Rails 7
 - Database: PostgreSQL
-- Front-end: React.js
-- Data fetching : tangram-query, axios
-- Testing : RSPec (back-end), Vitest (front-end)
+- Front-end: React
+- Data fetching and caching : Tangram-query, Axios
+- Testing : RSpec (back-end), Vitest (front-end)
 - CI/CD : GitHub Actions, Heroku
 
 ## Installation
